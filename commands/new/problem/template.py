@@ -19,11 +19,11 @@ files = [
     }}
   }},
   "misc": {{
-    "alias": "dummy-ofmi",
+    "alias": "{alias}",
     "visibility": "private",
     "languages": "all",
     "email_clarifications": 0,
-    "admin-groups": ["ofmi-2023"]
+    "admin-groups": ["{admin_group}"]
   }}
 }}
 """,

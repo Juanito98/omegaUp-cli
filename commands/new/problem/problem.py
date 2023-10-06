@@ -1,6 +1,7 @@
 import click
 import os
 import logging
+import datetime
 
 from .template import files, symlinks
 from core.repository import repositoryRoot
@@ -9,24 +10,58 @@ from core.problems_json import get_problems_json, save_problems_json
 
 @click.command()
 @click.option(
-    "--root", default=repositoryRoot(), help="The root directory of the project."
+    "--root",
+    default=repositoryRoot(),
+    help="The root directory of the project.",
+    type=click.Path(exists=True),
 )
-@click.option("--path", prompt=True, help="The directory name of the problem.")
 @click.option(
-    "--title", prompt=True, default="<title>", help="The title of the problem."
+    "--path",
+    prompt=True,
+    help="The directory name of the problem.",
 )
 @click.option(
-    "--source", prompt=True, default="<source>", help="The source of the problem."
+    "--title",
+    prompt=True,
+    default="<title>",
+    help="The title of the problem.",
 )
-@click.option("--sample", default="sample", help="The example file name.")
 @click.option(
-    "--overwrite", is_flag=True, default=False, help="Overwrite existing files."
+    "--source",
+    prompt=True,
+    default="<source>",
+    help="The source of the problem.",
+)
+@click.option(
+    "--admin-group",
+    prompt=True,
+    default=f"ofmi-{datetime.date.today().year}",
+    help="The admin group for the problem.",
+)
+@click.option(
+    "--alias",
+    prompt=True,
+    default="dummy-ofmi",
+    help="The alias for the problem.",
+)
+@click.option(
+    "--sample",
+    default="sample",
+    help="The example file name.",
+)
+@click.option(
+    "--overwrite",
+    is_flag=True,
+    default=False,
+    help="Overwrite existing files.",
 )
 def problem(
     root: str,
     path: str,
     title: str,
     source: str,
+    admin_group: str,
+    alias: str,
     sample: str,
     overwrite: bool,
 ) -> None:
@@ -53,10 +88,13 @@ def problem(
         raise click.ClickException(f"Directory {path} already exists.")
     os.makedirs(os.path.join(root, path), exist_ok=True)
 
+    # Create files
     d = {
         "title": title,
         "source": source,
         "sample": sample,
+        "admin_group": admin_group,
+        "alias": alias,
     }
     for file in files:
         file_path = os.path.join(root, path, file["path"].format(**d))
