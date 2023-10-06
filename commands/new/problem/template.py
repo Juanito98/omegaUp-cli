@@ -31,19 +31,29 @@ files = [
     {
         "path": "statements/es.markdown",
         "content": """_insertar descripción del problema aquí_
+
 # Entrada
+
 _inserta descripción de la entrada aquí_
+
 # Salida
+
 _inserta descripción de la salida aquí_
+
 # Ejemplo
+
 ||examplefile
 {sample}
 ||description
 _insertar descripción del ejemplo aquí_
 ||end
+
 # Límites
+
 - _inserta límites de las variables aquí_
+
 # Subtareas
+
 - Subtarea _inserta número aquí_ (_insertar puntos aquí_ puntos): _inserta descripción aquí_
 """,  # noqa,
     },
