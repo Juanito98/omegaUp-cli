@@ -1,7 +1,7 @@
 import subprocess
 
 
-def repositoryRoot() -> str:
+def repository_root() -> str:
     """Returns the root directory of the project.
 
     If this is a submodule, it gets the root of the top-level working tree.

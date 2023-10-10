@@ -4,14 +4,14 @@ import logging
 import datetime
 
 from .template import files, symlinks
-from core.repository import repositoryRoot
+from core.repository import repository_root
 from core.problems_json import get_problems_json, save_problems_json
 
 
 @click.command()
 @click.option(
     "--root",
-    default=repositoryRoot(),
+    default=repository_root(),
     help="The root directory of the project.",
     type=click.Path(exists=True),
 )
