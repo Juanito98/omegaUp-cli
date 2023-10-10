@@ -8,4 +8,4 @@ def new() -> None:
     pass
 
 
-new.add_command(problem)
+new.add_command(problem.problem)
