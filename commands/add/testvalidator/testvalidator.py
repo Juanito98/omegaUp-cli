@@ -1,12 +1,11 @@
 import os
 from typing import Optional
+from core.interactive import fetch_problems_dir
 from core.subtasks import infer_number_subtask_from_statements
 from core.logging import logging
 from core.tests_json import get_tests_json, save_tests_json
-from core.problems_json import get_problem_paths
 from core.repository import repository_root
 import click
-import inquirer
 
 from .template import files
 
@@ -41,18 +40,7 @@ def test_validator(
     overwrite: bool,
 ) -> None:
     if path is None:
-        problems = get_problem_paths(root)
-        path = str(
-            inquirer.prompt(
-                [
-                    inquirer.List(
-                        "path",
-                        message="What is the directory name of the problem?",
-                        choices=problems,
-                    )
-                ]
-            )["path"]
-        )
+        path = fetch_problems_dir(root)
 
     logging.info(f"Adding test validator to problem {path}...")
     if overwrite:
@@ -84,7 +72,6 @@ def test_validator(
             + "\n        else:\n            self.fail(f'Invalid subtask {caseName}')"
         )
 
-    # Add files
     # Create files
     d = {"validator": validator, "subtasks": subtasks}
     for file in files:

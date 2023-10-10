@@ -1,3 +1,4 @@
+from commands.add.invalidcase.invalidcase import invalid_case
 import click
 
 from commands.add.testvalidator.testvalidator import test_validator
@@ -9,3 +10,4 @@ def add() -> None:
 
 
 add.add_command(test_validator)
+add.add_command(invalid_case)
