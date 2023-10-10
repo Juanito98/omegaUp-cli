@@ -1,3 +1,4 @@
+from typing import Tuple
 from .problems_json import get_problem_paths
 import inquirer
 
@@ -41,3 +42,29 @@ def fetch_string_editor(prompt: str) -> str:
             ]
         )["editor"]
     )
+
+
+def fetch_int_range(prompt: str, min_range: int, max_range: int) -> Tuple[int, int]:
+    left = int(
+        inquirer.prompt(
+            [
+                inquirer.Text(
+                    "number",
+                    message=f"Enter minimum value for {prompt} ({min_range}-{max_range})",
+                    validate=lambda _, x: min_range <= int(x) <= max_range,
+                )
+            ]
+        )["number"]
+    )
+    right = int(
+        inquirer.prompt(
+            [
+                inquirer.Text(
+                    "number",
+                    message=f"Enter maximum value for {prompt} ({min_range}-{max_range})",
+                    validate=lambda _, x: left <= int(x) <= max_range,
+                )
+            ]
+        )["number"]
+    )
+    return left, right
