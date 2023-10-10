@@ -81,7 +81,7 @@ def solution(
             if not solution["filename"].endswith(name)
         ]
     payload: Dict = {
-        "filename": name,
+        "filename": f"../solutions/{name}",
         "verdict": verdict,
     }
     if verdict != "AC":
