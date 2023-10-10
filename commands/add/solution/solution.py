@@ -31,10 +31,10 @@ import click
     callback=lambda ctx, param, x: x if "." in x else x + ".cpp",
 )
 @click.option(
-    "--veredict",
+    "--verdict",
     prompt=True,
     default="AC",
-    help="The veredict of the solution.",
+    help="The verdict of the solution.",
     type=click.Choice(["AC", "WA", "PA", "TLE", "RTE", "MLE", "CE", "IE"]),
 )
 @click.option(
@@ -53,7 +53,7 @@ def solution(
     root: str,
     path: Optional[str],
     name: str,
-    veredict: str,
+    verdict: str,
     disable_official_solution: bool,
     overwrite: bool,
 ) -> None:
@@ -82,9 +82,9 @@ def solution(
         ]
     payload: Dict = {
         "filename": name,
-        "veredict": veredict,
+        "verdict": verdict,
     }
-    if veredict != "AC":
+    if verdict != "AC":
         # Get score_range
         min_score, max_score = fetch_int_range("score", 0, 100)
         payload["score_range"] = [min_score / 100, max_score / 100]
