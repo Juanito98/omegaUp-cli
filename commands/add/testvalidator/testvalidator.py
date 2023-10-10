@@ -54,9 +54,14 @@ def test_validator(
             )["path"]
         )
 
+    logging.info(f"Adding test validator to problem {path}...")
+    if overwrite:
+        logging.info("Overwriting existing files...")
+
     problem_dir = os.path.join(root, path)
 
     # Add validator to tests.json
+    logging.info("Adding validator to tests.json...")
     test_json = get_tests_json(problem_dir)
     test_json["inputs"] = {"filename": validator}
     save_tests_json(problem_dir, test_json)
