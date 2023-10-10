@@ -37,6 +37,6 @@ if __name__ == '__main__':
     },
     {
         "path": "tests/invalid-cases/sin-salto-de-linea.expected-failure",
-        "content": "unexpected trailing characters",
+        "content": "unexpected trailing characters\n",
     },
 ]
