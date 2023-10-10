@@ -50,7 +50,7 @@ def fetch_int_range(prompt: str, min_range: int, max_range: int) -> Tuple[int, i
             [
                 inquirer.Text(
                     "number",
-                    message=f"Enter minimum value for {prompt} ({min_range}-{max_range})",
+                    message=f"Enter min value for {prompt} ({min_range}-{max_range})",
                     validate=lambda _, x: min_range <= int(x) <= max_range,
                 )
             ]
@@ -61,7 +61,7 @@ def fetch_int_range(prompt: str, min_range: int, max_range: int) -> Tuple[int, i
             [
                 inquirer.Text(
                     "number",
-                    message=f"Enter maximum value for {prompt} ({min_range}-{max_range})",
+                    message=f"Enter max value for {prompt} ({min_range}-{max_range})",
                     validate=lambda _, x: left <= int(x) <= max_range,
                 )
             ]

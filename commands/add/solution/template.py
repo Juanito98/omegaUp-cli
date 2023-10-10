@@ -5,6 +5,15 @@ files = [
     },
 ]
 
+official_solution_files = [
+    {
+        "path": """.gitignore""",
+        "content": """**/*.out
+!tests/invalid-cases/*.out
+""",
+    },
+]
+
 cpp_template = """#include <iostream>
 
 int main() {
