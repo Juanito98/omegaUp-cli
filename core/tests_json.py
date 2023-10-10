@@ -5,7 +5,7 @@ from typing import Dict
 
 def get_tests_json(problem_dir: str) -> Dict:
     with open(os.path.join(problem_dir, "tests/tests.json"), "r") as p:
-        config = json.load(p)
+        config: Dict = json.load(p)
     return config
 
 

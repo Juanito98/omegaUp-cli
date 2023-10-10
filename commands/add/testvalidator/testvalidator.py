@@ -39,7 +39,7 @@ def test_validator(
     path: Optional[str],
     validator: str,
     overwrite: bool,
-):
+) -> None:
     if path is None:
         problems = get_problem_paths(root)
         path = str(

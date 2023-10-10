@@ -5,7 +5,7 @@ from typing import Dict, List
 
 def get_problems_json(repositoryRoot: str) -> Dict:
     with open(os.path.join(repositoryRoot, "problems.json"), "r") as p:
-        config = json.load(p)
+        config: Dict = json.load(p)
     return config
 
 
