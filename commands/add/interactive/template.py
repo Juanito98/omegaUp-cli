@@ -3,7 +3,7 @@ files = [
         "path": """interactive/Main.cpp""",
         "content": """#include <iostream>
 
-#include "{module_name}"
+#include "{module_name}.h"
 
 {subtasks}""",
     },
@@ -11,7 +11,7 @@ files = [
         "path": """interactive/Main.distrib.cpp""",
         "content": """#include <iostream>
 
-#include "{module_name}"
+#include "{module_name}.h"
 
 int main() {{
   // TODO: Implementar
