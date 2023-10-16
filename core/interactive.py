@@ -1,4 +1,4 @@
-from typing import Tuple
+from typing import Optional, Tuple
 from .problems_json import get_problem_paths
 import inquirer
 
@@ -18,13 +18,14 @@ def fetch_problems_dir(root: str) -> str:
     )
 
 
-def fetch_string_text(prompt: str) -> str:
+def fetch_string_text(prompt: str, default: Optional[str] = None) -> str:
     return str(
         inquirer.prompt(
             [
                 inquirer.Text(
                     "text",
                     message=prompt,
+                    default=default,
                 )
             ]
         )["text"]
